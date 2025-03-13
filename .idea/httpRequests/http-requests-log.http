@@ -1,0 +1,90 @@
+POST http://127.0.0.1:8000/books
+Content-Type: application/json
+Content-Length: 91
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "id": 1,
+  "title": "Гаррі Поттер",
+  "author": "Дж. К. Роулінг"
+}
+
+<> 2025-03-13T221142.200.json
+
+###
+
+GET http://127.0.0.1:8000/books
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-03-13T221139.200.json
+
+###
+
+DELETE http://127.0.0.1:8000/books/1
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2025-03-13T221136.200.json
+
+###
+
+GET http://127.0.0.1:8000/books
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-03-13T221133.200.json
+
+###
+
+GET http://127.0.0.1:8000/books/1
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-03-13T221130.200.json
+
+###
+
+POST http://127.0.0.1:8000/books
+Content-Type: application/json
+Content-Length: 91
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "id": 1,
+  "title": "Гаррі Поттер",
+  "author": "Дж. К. Роулінг"
+}
+
+<> 2025-03-13T221123.200.json
+
+###
+
+DELETE http://127.0.0.1:8000/books/1
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2025-03-13T221117.404.json
+
+###
+
+GET http://127.0.0.1:8000/books
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-03-13T221114.200.json
+
+###
+

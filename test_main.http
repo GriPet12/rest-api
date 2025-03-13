@@ -1,0 +1,21 @@
+### Отримати всі книги
+GET http://127.0.0.1:8000/books
+Accept: application/json
+
+### Отримати книгу за ID
+GET http://127.0.0.1:8000/books/1
+Accept: application/json
+
+### Додати нову книгу
+POST http://127.0.0.1:8000/books
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Гаррі Поттер",
+  "author": "Дж. К. Роулінг"
+}
+
+### Видалити книгу за ID
+DELETE http://127.0.0.1:8000/books/1
+Accept: application/json

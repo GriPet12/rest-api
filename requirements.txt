@@ -1,0 +1,5 @@
+flask~=3.1.0
+flask-sqlalchemy
+psycopg2-binary
+marshmallow-sqlalchemy
+marshmallow~=3.26.1

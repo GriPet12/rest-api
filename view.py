@@ -11,7 +11,7 @@ def configure_routes(app):
     @app.route("/")
     def index():
         return jsonify({
-            "List": "GET /books?limit=10&offset=0",
+            "List": "GET /books?limit=10&cursor=0",
             "Detail": "GET /books/{id}",
             "Create": "POST /books",
             "Delete": "DELETE /books/{id}"
@@ -20,10 +20,26 @@ def configure_routes(app):
     @app.route("/books", methods=["GET"])
     def get_books():
         limit = request.args.get('limit', 10, type=int)
-        offset = request.args.get('offset', 0, type=int)
+        cursor = request.args.get('cursor', 0, type=int)
 
-        books = Book.query.limit(limit).offset(offset).all()
-        return jsonify(books_schema.dump(books))
+        books = Book.query.filter(Book.id > cursor).order_by(Book.id).limit(limit).all()
+
+        books_data = books_schema.dump(books)
+
+        if books:
+            next_cursor = books[-1].id
+            has_more = len(books) == limit
+        else:
+            next_cursor = cursor
+            has_more = False
+
+        result = {
+            "books": books_data,
+            "next_cursor": next_cursor,
+            "has_more": has_more
+        }
+
+        return jsonify(result)
 
     @app.route("/books/<int:book_id>", methods=["GET"])
     def get_book(book_id):

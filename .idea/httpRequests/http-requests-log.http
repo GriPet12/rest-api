@@ -1,3 +1,66 @@
+GET http://127.0.0.1:5000/docs
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2025-03-27T161821.200.html
+
+###
+
+GET http://127.0.0.1:5000/books
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-03-27T161817.200.json
+
+###
+
+DELETE http://127.0.0.1:5000/books/1
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2025-03-27T161814.200.json
+
+###
+
+GET http://127.0.0.1:5000/books
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-03-27T161803.200.json
+
+###
+
+POST http://127.0.0.1:5000/books
+Content-Type: application/json
+Content-Length: 91
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "id": 1,
+  "title": "Гаррі Поттер",
+  "author": "Дж. К. Роулінг"
+}
+
+<> 2025-03-27T161759.200.json
+
+###
+
+GET http://127.0.0.1:5000/books
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-03-27T161752.200.json
+
+###
+
 POST http://127.0.0.1:8000/books
 Content-Type: application/json
 Content-Length: 91

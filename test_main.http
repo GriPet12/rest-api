@@ -1,13 +1,13 @@
 ### Отримати всі книги
-GET http://127.0.0.1:8000/books
+GET http://127.0.0.1:5000/books
 Accept: application/json
 
 ### Отримати книгу за ID
-GET http://127.0.0.1:8000/books/1
+GET http://127.0.0.1:5000/books/1
 Accept: application/json
 
 ### Додати нову книгу
-POST http://127.0.0.1:8000/books
+POST http://127.0.0.1:5000/books
 Content-Type: application/json
 
 {
@@ -17,5 +17,5 @@ Content-Type: application/json
 }
 
 ### Видалити книгу за ID
-DELETE http://127.0.0.1:8000/books/1
+DELETE http://127.0.0.1:5000/books/1
 Accept: application/json

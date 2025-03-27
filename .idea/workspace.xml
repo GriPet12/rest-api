@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0940b3ef-6a8a-4959-aaee-eaae9613118f" name="Changes" comment="" />
+    <list default="true" id="1cc9de0e-46a8-456f-9f16-67ea43145ac0" name="Changes" comment="Lab-4" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,9 +21,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2uHCXhaq5XFbckq087sInGxC9jI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -32,7 +32,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Docker.docker-compose.yml.mongodb: Compose Deployment.executor": "Run",
+    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
     "FastAPI.rest-api-lab.executor": "Run",
+    "HTTP Request.test_main | #5.executor": "Run",
     "HTTP Request.test_main | Видалити книгу за ID.executor": "Run",
     "HTTP Request.test_main | Додати нову книгу.executor": "Run",
     "HTTP Request.test_main | Отримати всі книги.executor": "Run",
@@ -47,17 +50,23 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="FastAPI.rest-api-lab">
+  <component name="RunManager" selected="HTTP Request.test_main | #5">
     <configuration name="test_main | Видалити книгу за ID" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="Видалити книгу за ID" index="4" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="test_main | Отримати книгу за ID" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="Отримати книгу за ID" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
-    <configuration name="test_main | Додати нову книгу" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="Додати нову книгу" index="3" runType="Run single request">
+    <configuration name="test_main | Отримати всі книги" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="Отримати всі книги" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="test_main | Отримати всі книги" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="Отримати всі книги" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="test_main | #5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="#5" index="5" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="test_main | Додати нову книгу" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="Додати нову книгу" index="3" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="rest-api-lab" type="Python.FastAPI">
@@ -75,12 +84,25 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.test_main | Додати нову книгу" />
+        <item itemvalue="HTTP Request.test_main | #5" />
         <item itemvalue="HTTP Request.test_main | Отримати всі книги" />
         <item itemvalue="HTTP Request.test_main | Видалити книгу за ID" />
-        <item itemvalue="HTTP Request.test_main | Отримати книгу за ID" />
+        <item itemvalue="HTTP Request.test_main | Додати нову книгу" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
@@ -88,7 +110,6 @@
     <attachedChunks>
       <set>
         <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-PY-243.24978.54" />
-        <option value="bundled-python-sdk-91e3b7efe1d4-466328ff949b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.24978.54" />
       </set>
     </attachedChunks>
   </component>
@@ -108,6 +129,7 @@
     <option name="version" value="3" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/rest_api$rest_api_lab.coverage" NAME="rest-api-lab Coverage Results" MODIFIED="1743084806088" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/rest_api_lab$rest_api_lab.coverage" NAME="rest-api-lab Coverage Results" MODIFIED="1741896568551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

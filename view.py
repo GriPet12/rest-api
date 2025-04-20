@@ -22,9 +22,34 @@ def configure_routes(app):
         limit = request.args.get('limit', 10, type=int)
         offset = request.args.get('offset', 0, type=int)
 
-        books = Book.query.limit(limit).offset(offset).all()
-        return jsonify(books_schema.dump(books))
+        total_count = Book.query.count()
 
+        books = Book.query.limit(limit).offset(offset).all()
+
+        base_url = request.base_url
+
+        pagination = {
+            "total_count": total_count,
+            "limit": limit,
+            "offset": offset,
+        }
+
+        if offset + limit < total_count:
+            pagination["next_url"] = f"{base_url}?limit={limit}&offset={offset + limit}"
+        else:
+            pagination["next_url"] = None
+
+        # Add previous_url if this isn't the first page
+        if offset > 0:
+            prev_offset = max(0, offset - limit)
+            pagination["previous_url"] = f"{base_url}?limit={limit}&offset={prev_offset}"
+        else:
+            pagination["previous_url"] = None
+
+        return jsonify({
+            "books": books_schema.dump(books),
+            "pagination": pagination
+        })
     @app.route("/books/<int:book_id>", methods=["GET"])
     def get_book(book_id):
         book = Book.query.get_or_404(book_id)

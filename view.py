@@ -1,65 +1,47 @@
-from flask import jsonify, request
-from marshmallow import ValidationError
+from flask_restful import Api, Resource
+from flask_apispec import FlaskApiSpec, doc, use_kwargs, marshal_with
+from marshmallow import fields
 from models import db, Book
 from schemas import BookSchema
 
 book_schema = BookSchema()
 books_schema = BookSchema(many=True)
 
-
-def configure_routes(app):
-    @app.route("/")
-    def index():
-        return jsonify({
-            "List": "GET /books?limit=10&cursor=0",
-            "Detail": "GET /books/{id}",
-            "Create": "POST /books",
-            "Delete": "DELETE /books/{id}"
-        })
-
-    @app.route("/books", methods=["GET"])
-    def get_books():
-        limit = request.args.get('limit', 10, type=int)
-        cursor = request.args.get('cursor', 0, type=int)
-
+class BookListResource(Resource):
+    @doc(description="Get a list of books", tags=["Books"])
+    @use_kwargs({"limit": fields.Int(missing=10), "cursor": fields.Int(missing=0)}, location="query")
+    @marshal_with({"books": fields.List(fields.Nested(BookSchema)), "next_cursor": fields.Int, "has_more": fields.Bool})
+    def get(self, limit, cursor):
         books = Book.query.filter(Book.id > cursor).order_by(Book.id).limit(limit).all()
-
         books_data = books_schema.dump(books)
+        next_cursor = books[-1].id if books else cursor
+        has_more = len(books) == limit
+        return {"books": books_data, "next_cursor": next_cursor, "has_more": has_more}
 
-        if books:
-            next_cursor = books[-1].id
-            has_more = len(books) == limit
-        else:
-            next_cursor = cursor
-            has_more = False
+    @doc(description="Add a new book", tags=["Books"])
+    @use_kwargs(BookSchema, location="json")
+    @marshal_with(BookSchema, code=201)
+    def post(self, **kwargs):
+        book = Book(**kwargs)
+        db.session.add(book)
+        db.session.commit()
+        return book, 201
 
-        result = {
-            "books": books_data,
-            "next_cursor": next_cursor,
-            "has_more": has_more
-        }
-
-        return jsonify(result)
-
-    @app.route("/books/<int:book_id>", methods=["GET"])
-    def get_book(book_id):
+class BookResource(Resource):
+    @doc(description="Get a book by ID", tags=["Books"])
+    @marshal_with(BookSchema)
+    def get(self, book_id):
         book = Book.query.get_or_404(book_id)
-        return jsonify(book_schema.dump(book))
+        return book
 
-    @app.route("/books", methods=["POST"])
-    def add_book():
-        try:
-            book_data = book_schema.load(request.get_json())
-            book = Book(**book_data)
-            db.session.add(book)
-            db.session.commit()
-            return jsonify(book_schema.dump(book)), 201
-        except ValidationError as err:
-            return jsonify(err.messages), 400
-
-    @app.route("/books/<int:book_id>", methods=["DELETE"])
-    def delete_book(book_id):
+    @doc(description="Delete a book by ID", tags=["Books"])
+    def delete(self, book_id):
         book = Book.query.get_or_404(book_id)
         db.session.delete(book)
         db.session.commit()
         return "", 204
+
+def configure_routes(app):
+    api = Api(app)
+    api.add_resource(BookListResource, "/books")
+    api.add_resource(BookResource, "/books/<int:book_id>")

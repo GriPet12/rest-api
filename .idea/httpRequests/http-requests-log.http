@@ -1,3 +1,19 @@
+POST http://127.0.0.1:5000/books
+Content-Type: application/json
+Content-Length: 80
+User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.5
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "title": "Гаррі Поттер",
+  "author": "Дж. К. Роулінг"
+}
+
+<> 2025-05-06T152746.200.json
+
+###
+
 GET http://127.0.0.1:5000/docs
 User-Agent: IntelliJ HTTP Client/PyCharm 2024.3.5
 Accept-Encoding: br, deflate, gzip, x-gzip

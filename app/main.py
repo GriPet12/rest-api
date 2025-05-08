@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 
 from app.database import db
-from app.routers import books
+from app.routers import books, auth
 
 app = FastAPI(title="Library API")
 
+app.include_router(auth.router)
 app.include_router(books.router)
 
 @app.on_event("startup")

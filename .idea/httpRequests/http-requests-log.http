@@ -1,3 +1,246 @@
+GET http://127.0.0.1:8000/books/1
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-08T104318.404.json
+
+###
+
+DELETE http://127.0.0.1:8000/books/1
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0dXNlciIsInRva2VuX3R5cGUiOiJhY2Nlc3MiLCJleHAiOjE3NDY3MDI2ODZ9.0HgD1sqvRJAJNwpDpitaGQ4yiRIxxMmliEsEk-HR-48
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2025-05-08T104314.200.json
+
+###
+
+GET http://127.0.0.1:8000/books
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-08T104311.200.json
+
+###
+
+GET http://127.0.0.1:8000/books/1
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-08T104307.200.json
+
+###
+
+POST http://127.0.0.1:8000/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0dXNlciIsInRva2VuX3R5cGUiOiJhY2Nlc3MiLCJleHAiOjE3NDY3MDI2ODZ9.0HgD1sqvRJAJNwpDpitaGQ4yiRIxxMmliEsEk-HR-48
+Content-Length: 80
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "title": "Гаррі Поттер",
+  "author": "Дж. К. Роулінг"
+}
+
+<> 2025-05-08T104302.200.json
+
+###
+
+POST http://127.0.0.1:8000/books
+Content-Type: application/json
+Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
+Content-Length: 80
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "title": "Гаррі Поттер",
+  "author": "Дж. К. Роулінг"
+}
+
+<> 2025-05-08T104210.401.json
+
+###
+
+POST http://127.0.0.1:8000/auth/refresh
+Content-Type: application/json
+Content-Length: 184
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0dXNlciIsInRva2VuX3R5cGUiOiJyZWZyZXNoIiwiZXhwIjoxNzQ3MzA1Njg2fQ.CdK2_HzDh4LXVhwHSSBbG76FYhjeWuCbZL9dnNqlWhk"
+}
+
+<> 2025-05-08T104158.422.json
+
+###
+
+POST http://127.0.0.1:8000/auth/refresh
+Content-Type: application/json
+Content-Length: 48
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "refresh_token": "YOUR_REFRESH_TOKEN_HERE"
+}
+
+<> 2025-05-08T104134.422.json
+
+###
+
+POST http://127.0.0.1:8000/auth/token
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 38
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+username=testuser&password=password123
+
+<> 2025-05-08T104126.200.json
+
+###
+
+POST http://127.0.0.1:8000/auth/register
+Content-Type: application/json
+Content-Length: 88
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+<> 2025-05-08T104051.200.json
+
+###
+
+GET http://127.0.0.1:8000/books/1
+Accept: application/json
+Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-08T104037.404.json
+
+###
+
+GET http://127.0.0.1:8000/books
+Accept: application/json
+Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-08T104034.200.json
+
+###
+
+GET http://127.0.0.1:8000
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-08T104028.200.json
+
+###
+
+GET http://127.0.0.1:8000
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PhpStorm 2025.1.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-07T180034.200.json
+
+###
+
+POST http://127.0.0.1:8000/auth/register
+Content-Type: application/json
+Content-Length: 88
+User-Agent: IntelliJ HTTP Client/PhpStorm 2025.1.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+<> 2025-05-07T175952.500.txt
+
+###
+
+GET http://127.0.0.1:8000
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PhpStorm 2025.1.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-07T175918.200.json
+
+###
+
+GET http://127.0.0.1:8000
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PhpStorm 2025.1.0.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-07T175903.200.json
+
+###
+
+GET http://127.0.0.1:5000/books
+Accept: application/json
+Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-07T154045.500.txt
+
+###
+
+GET http://127.0.0.1:5000/books
+Accept: application/json
+Authorization: Bearer YOUR_ACCESS_TOKEN_HERE
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-07T154017.500.txt
+
+###
+
+GET http://127.0.0.1:5000
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-07T154009.200.json
+
+###
+
+GET http://127.0.0.1:5000/books
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+<> 2025-05-07T153602.401.json
+
+###
+
 POST http://127.0.0.1:5000/books
 Content-Type: application/json
 Content-Length: 80

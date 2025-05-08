@@ -1,20 +1,50 @@
-### Отримати всі книги
-GET http://127.0.0.1:5000/books
+### Root endpoint
+GET http://127.0.0.1:8000/
 Accept: application/json
 
-### Отримати книгу за ID
-GET http://127.0.0.1:5000/books/1
-Accept: application/json
-
-### Додати нову книгу
-POST http://127.0.0.1:5000/books
+### Register a new user
+POST http://127.0.0.1:8000/auth/register
 Content-Type: application/json
+
+{
+  "username": "testuser",
+  "email": "test@example.com",
+  "password": "password123"
+}
+
+### Login to get access token
+POST http://127.0.0.1:8000/auth/token
+Content-Type: application/x-www-form-urlencoded
+
+username=testuser&password=password123
+
+### Refresh token
+POST http://127.0.0.1:8000/auth/refresh
+Content-Type: application/json
+
+{
+  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0dXNlciIsInRva2VuX3R5cGUiOiJyZWZyZXNoIiwiZXhwIjoxNzQ3MzA1Njg2fQ.CdK2_HzDh4LXVhwHSSBbG76FYhjeWuCbZL9dnNqlWhk"
+}
+
+### Get all books
+GET http://127.0.0.1:8000/books
+Accept: application/json
+
+### Get book by ID
+GET http://127.0.0.1:8000/books/1
+Accept: application/json
+
+### Add new book (authenticated)
+POST http://127.0.0.1:8000/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0dXNlciIsInRva2VuX3R5cGUiOiJhY2Nlc3MiLCJleHAiOjE3NDY3MDI2ODZ9.0HgD1sqvRJAJNwpDpitaGQ4yiRIxxMmliEsEk-HR-48
 
 {
   "title": "Гаррі Поттер",
   "author": "Дж. К. Роулінг"
 }
 
-### Видалити книгу за ID
-DELETE http://127.0.0.1:5000/books/1
+### Delete book by ID (authenticated)
+DELETE http://127.0.0.1:8000/books/1
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ0ZXN0dXNlciIsInRva2VuX3R5cGUiOiJhY2Nlc3MiLCJleHAiOjE3NDY3MDI2ODZ9.0HgD1sqvRJAJNwpDpitaGQ4yiRIxxMmliEsEk-HR-48

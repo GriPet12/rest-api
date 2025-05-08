@@ -4,6 +4,7 @@ import os
 MONGO_URL = os.getenv("MONGO_URL", "mongodb://localhost:27017")
 DB_NAME = os.getenv("DB_NAME", "library")
 COLLECTION_NAME = "books"
+USER_COLLECTION = "users"
 
 class Database:
     client: AsyncIOMotorClient = None
@@ -21,3 +22,6 @@ db = Database()
 
 async def get_collection():
     return db.client[DB_NAME][COLLECTION_NAME]
+
+async def get_user_collection():
+    return db.client[DB_NAME][USER_COLLECTION]

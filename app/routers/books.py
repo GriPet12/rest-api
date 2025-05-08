@@ -1,7 +1,8 @@
 from fastapi import APIRouter, HTTPException, Query, Depends
 
-from app.models import Book, BookCreate, BooksResponse
+from app.models import Book, BookCreate, BooksResponse, User
 from app.database import get_collection
+from app.security import get_current_user
 
 router = APIRouter(prefix="/books", tags=["books"])
 
@@ -42,7 +43,11 @@ async def get_book(book_id: int, collection=Depends(get_collection)):
 
 
 @router.post("", response_model=Book)
-async def add_book(book: BookCreate, collection=Depends(get_collection)):
+async def add_book(
+    book: BookCreate,
+    collection=Depends(get_collection),
+    current_user: User = Depends(get_current_user)
+):
     last_book = await collection.find_one({}, sort=[("id", -1)])
     new_id = 1 if not last_book else last_book["id"] + 1
 
@@ -54,7 +59,11 @@ async def add_book(book: BookCreate, collection=Depends(get_collection)):
 
 
 @router.delete("/{book_id}")
-async def delete_book(book_id: int, collection=Depends(get_collection)):
+async def delete_book(
+    book_id: int,
+    collection=Depends(get_collection),
+    current_user: User = Depends(get_current_user)
+):
     result = await collection.delete_one({"id": book_id})
     if result.deleted_count:
         return {"message": "Книга успішно видалена"}

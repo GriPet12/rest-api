@@ -38,12 +38,15 @@ async def get_user(username: str):
 
 
 async def authenticate_user(username: str, password: str):
-    user = await get_user(username)
-    if not user:
+    user_collection = await get_user_collection()
+    user_dict = await user_collection.find_one({"username": username})
+    if not user_dict:
         return False
-    if not verify_password(password, user.hashed_password):
+    if "hashed_password" not in user_dict:
         return False
-    return user
+    if not verify_password(password, user_dict["hashed_password"]):
+        return False
+    return User(**user_dict)
 
 
 def create_token(data: dict, expires_delta: Optional[timedelta] = None):
@@ -58,18 +61,23 @@ def create_token(data: dict, expires_delta: Optional[timedelta] = None):
     return encoded_jwt
 
 
-def create_access_token(subject: Union[str, int]):
-    return create_token(
-        {"sub": str(subject), "token_type": "access"},
-        timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
-    )
+def create_access_token(username: str):
+    expires_delta = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
+    expire = datetime.utcnow() + expires_delta
+    expires_timestamp = int(expire.timestamp())
 
+    to_encode = {"sub": username, "token_type": "access", "exp": expire}
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt, expires_timestamp
 
-def create_refresh_token(subject: Union[str, int]):
-    return create_token(
-        {"sub": str(subject), "token_type": "refresh"},
-        timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
-    )
+def create_refresh_token(username: str):
+    expires_delta = timedelta(days=REFRESH_TOKEN_EXPIRE_DAYS)
+    expire = datetime.utcnow() + expires_delta
+    expires_timestamp = int(expire.timestamp())
+
+    to_encode = {"sub": username, "token_type": "refresh", "exp": expire}
+    encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+    return encoded_jwt, expires_timestamp
 
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
